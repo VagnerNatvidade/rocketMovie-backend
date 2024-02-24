@@ -3,10 +3,14 @@ const express = require("express");
 
 // start express
 const app = express();
+// set the format we send the information
+app.use(express.json());
 
 // send a page message (text)
-app.get("/message", (req, res) => {
-  res.send("Hello World");
+app.post("/users", (req, res) => {
+  const { name, email, password } = req.body;
+
+  res.json({ name, email, password });
 });
 // set a port
 const PORT = 3333;

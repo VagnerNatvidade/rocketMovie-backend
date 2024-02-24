@@ -1,17 +1,17 @@
 // import express
 const express = require("express");
 
-// start express
+// import routes from ./routes/index.js
+const routes = require("./routes");
+
+// initialize express
 const app = express();
 // set the format we send the information
 app.use(express.json());
 
-// send a page message (text)
-app.post("/users", (req, res) => {
-  const { name, email, password } = req.body;
+// call routes
+app.use(routes);
 
-  res.json({ name, email, password });
-});
 // set a port
 const PORT = 3333;
 app.listen(PORT, () => console.log("server is running"));

@@ -1,11 +1,16 @@
 // import express-async-errors
 require("express-async-errors");
 
+const migrationsRun = require("./database/sqlite/migrations");
+
 // import AppError
 const AppError = require("./utils/AppError");
 
 // import express
 const express = require("express");
+
+// import database connection
+migrationsRun();
 
 // import routes from ./routes/index.js
 const routes = require("./routes");

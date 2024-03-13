@@ -1,4 +1,3 @@
-// error messages
 class AppError {
   message;
   statusCode;

@@ -1,10 +1,8 @@
 const { hash, compare } = require("bcryptjs");
-// import AppError
 const AppError = require("../utils/AppError");
 
 const sqliteConnection = require("../database/sqlite");
 
-// processing of user request
 class UsersController {
   async create(req, res) {
     const { name, email, password } = req.body;

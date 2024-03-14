@@ -8,6 +8,7 @@ class UsersController {
     const { name, email, password } = req.body;
 
     const database = await sqliteConnection();
+    
     const checkUserExists = await database.get(
       "SELECT * FROM users WHERE email = (?)",
       [email]

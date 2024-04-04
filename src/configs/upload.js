@@ -1,16 +1,18 @@
-const path = require9("path");
-const multer = require9("multer");
-const crypto = require9("crypto");
+const path = require("path");
+const multer = require("multer");
+const crypto = require("crypto");
 
-const TMP_FOLDER = path.sesolve(__dirname, "..", "..", "tmp");
-const UPLOADS_FOLDER = path.sesolve(__dirname, "uploads");
+const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp");
+const UPLOADS_FOLDER = path.resolve(__dirname, "uploads");
 
 const MULTER = {
-  storage: multer.storage({
+  storage: multer.diskStorage({
     destination: TMP_FOLDER,
     filename(req, file, callback) {
       const fileHash = crypto.randomBytes(10).toString("hex");
       const fileName = `${fileHash}-${file.originalname}`;
+
+      return callback(null, fileName);
     },
   }),
 };
